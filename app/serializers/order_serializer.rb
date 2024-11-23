@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class OrderSerializer < ActiveModel::Serializer
-  attributes :order_id, :date, :total_value
+  attributes :order_id, :date, :total
 
   belongs_to :user
   has_many :products
@@ -14,7 +14,7 @@ class OrderSerializer < ActiveModel::Serializer
     Time.parse(object.order_date.to_s).strftime('%Y-%m-%d')
   end
 
-  def total_value
+  def total
     object.total_value
   end
 end
