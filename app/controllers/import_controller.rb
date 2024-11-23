@@ -6,6 +6,6 @@ class ImportController < ApplicationController
       FileParserService.new(file).parse_lines
     end
 
-    render plain: 'AAAAAAAAA'
+    head :no_content
   end
 end
