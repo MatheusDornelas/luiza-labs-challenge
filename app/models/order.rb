@@ -4,13 +4,17 @@ class Order < ApplicationRecord
   before_create :add_timestamps
   before_create :update_timestamp
 
-  attribute :external_id, :string
+  attribute :external_id, :integer
   attribute :order_date, :datetime
   attribute :user_id, :uuid
 
   belongs_to :user, optional: true, inverse_of: :orders
 
   has_many :products
+
+  def total_value
+    self.products.sum(:price).to_s
+  end
 
   private
 

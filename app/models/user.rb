@@ -4,7 +4,7 @@ class User < ApplicationRecord
   before_create :add_timestamps
   before_create :update_timestamp
 
-  attribute :external_id, :string
+  attribute :external_id, :integer
   attribute :name, :string
 
   has_many :orders, inverse_of: :user

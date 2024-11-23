@@ -4,8 +4,8 @@ class Product < ApplicationRecord
   before_create :add_timestamps
   before_create :update_timestamp
 
-  attribute :external_id, :string
-  attribute :price, :float
+  attribute :external_id, :integer
+  attribute :price, :string
 
   belongs_to :order
 
