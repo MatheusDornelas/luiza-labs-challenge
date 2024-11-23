@@ -1,0 +1,44 @@
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns: ['\A#']
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/ParameterLists:
+  Max: 10
+
+Metrics/MethodLength:
+  Max: 20
+
+AllCops:
+  TargetRubyVersion: 3.0
+  SuggestExtensions: false
+  NewCops: disable
+  Exclude:
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'db/schema.rb'
+    - 'db/**/*.rb'
+    - '**/db/migrate/**/*.rb'
+    - 'config/**/*.rb'
+    - 'spec/*_helper.rb'
+    - 'config.ru'
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
