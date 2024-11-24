@@ -29,6 +29,14 @@ After that containers must running, and we as good run the migrations:
 
 Now, the database is ready to receive the data through the endpoint `POST /import-file`. Check more details from this endpoint on Endpoint documentation session.
 
+## Run tests:
+
+To setup databse (just need to run first time or when migration changes):
+`docker compose run --rm web bin/rails db:migrate RAILS_ENV=test`
+
+To run test suite:
+`docker compose run --rm web bundle exec rspec`
+
 ## Endpoint documentation:
 
 `POST /import-file`
