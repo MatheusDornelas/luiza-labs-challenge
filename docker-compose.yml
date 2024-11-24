@@ -18,6 +18,22 @@ services:
     ports:
       - "5433:5432"
 
+  redis:
+    image: redis:alpine
+    command: redis-server
+    ports:
+      - '6379:6379'
+
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      - db_test
+      - redis
+
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
@@ -28,4 +44,5 @@ services:
     depends_on:
       - db
       - db_test
+      - sidekiq
 

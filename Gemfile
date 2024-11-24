@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails', '7.0.0'
   gem 'rails-controller-testing'
   gem 'bullet'
+  gem 'sidekiq'
 end
 
 group :test do
