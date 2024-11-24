@@ -18,8 +18,4 @@ module Pagination
   def paginate_offset
     (page - 1) * per_page
   end
-
-  def paginate
-    ->(it) { it.limit(per_page).offset(paginate_offset) }
-  end
 end
