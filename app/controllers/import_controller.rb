@@ -2,9 +2,9 @@
 
 class ImportController < ApplicationController
   def import_file
-    File.open(params[:file].tempfile, 'r') do |file|
-      FileParserService.new(file).parse_lines
-    end
+    file = File.open(params[:file].tempfile, 'r')
+    p file
+    FileParserJob.perform_async(file)
 
     head :no_content
   end
