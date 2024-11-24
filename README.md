@@ -2,7 +2,11 @@
 
 ## Introduction
 
-**This project consists of a small API that parses a .txt file with orders data to a new structured JSON format. To make this work the data become from txt file is stored on a SQL database in a entity based structure to be easily returned in an JSON.**
+**This project consists of a small API that receive and parses a .txt file with orders data that will be available in a structured JSON format through some endpoints. To make this work the data become from txt file is stored on a SQL database in a entity based structure (User, Order and Product) to be easily returned in an JSON.**
+
+## ER Diagram
+
+![alt text](image.png)
 
 ## Technologies:
 
