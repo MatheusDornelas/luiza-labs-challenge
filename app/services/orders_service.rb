@@ -9,7 +9,7 @@ class OrdersService
   end
 
   def fetch_orders
-    orders = Order.order(:external_id)
+    orders = Order.includes([:products]).order(:external_id)
     orders = orders.where('order_date >= ?', @start_date) if @start_date.present?
     orders = orders.where('order_date <= ?', @end_date) if @end_date.present?
     orders.limit(@per_page).offset(@page)

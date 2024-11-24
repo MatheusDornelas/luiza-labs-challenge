@@ -8,7 +8,7 @@ class UsersService
   end
 
   def fetch_users
-    users = User.includes([:orders]).joins(:orders).order(:external_id)
+    users = User.includes([orders: [:products]]).joins(:orders).order(:external_id)
     users = users.where('orders.external_id = ?', @order_id) if @order_id.present?
     users.limit(@per_page).offset(@page)
   end
