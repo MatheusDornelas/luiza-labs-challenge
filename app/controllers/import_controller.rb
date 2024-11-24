@@ -2,7 +2,6 @@
 
 class ImportController < ApplicationController
   def import_file
-    p params
     file = File.new(params[:file].tempfile).read
 
     cache_id = SecureRandom.uuid
