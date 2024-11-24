@@ -2,9 +2,13 @@
 
 class ImportController < ApplicationController
   def import_file
-    file = File.open(params[:file].tempfile, 'r')
-    p file
-    FileParserJob.perform_async(file)
+    p params
+    file = File.new(params[:file].tempfile).read
+
+    cache_id = SecureRandom.uuid
+    REDIS_CLIENT.set(cache_id, file)
+
+    FileParserJob.perform_async(cache_id)
 
     head :no_content
   end

@@ -4,14 +4,11 @@ class FileParserJob
   include Sidekiq::Job
   sidekiq_options retry: false
 
-  def perform(file)
-    p 'AAAAAAAAAAAA'
-    p file
-    p 'AAAAAAAAAAAA'
-    import_file = File.open(file, 'r')
+  def perform(cache_id)
+    file = REDIS_CLIENT.get(cache_id).split(/\n+/)
+
     ActiveRecord::Base.transaction do
-      import_file.each do |line|
-        p line
+      file.each do |line|
         user_id = line.slice(0..9).to_i
         user_name = line.slice(10..54).strip
         user = save_user(user_id, user_name)
