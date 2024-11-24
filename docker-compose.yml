@@ -45,4 +45,5 @@ services:
       - db
       - db_test
       - sidekiq
+      - redis
 

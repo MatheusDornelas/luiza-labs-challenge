@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'bullet'
   gem 'sidekiq'
+  gem 'redis'
 end
 
 group :test do
