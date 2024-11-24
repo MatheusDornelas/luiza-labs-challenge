@@ -46,7 +46,13 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'active_model_serializers'
+  gem 'rspec-rails', '7.0.0'
+  gem 'rails-controller-testing'
+  gem 'bullet'
 end
 
+group :test do
+  gem 'database_cleaner-active_record'
+end
 
+gem 'active_model_serializers'
