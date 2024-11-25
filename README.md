@@ -39,6 +39,10 @@ To setup databse (just need to run first time or when migration changes):
 To run test suite:
 `docker compose run --rm web bundle exec rspec`
 
+## Endpoint usage:
+
+All endpoints work on host: `localhost:3000`.
+
 ## Endpoint documentation:
 
 `POST /import-file`
@@ -50,6 +54,8 @@ Body:
 
 Response:
 204 - No content
+
+Example: `curl --location 'localhost:3000/import-file --form 'file=@"filePath"'`
 
 `GET /users?per_page={integer}&page={integer}&order_id={string}`
 
@@ -108,6 +114,8 @@ Response:
 
 `GET /orders?per_page={integer}&page={integer}&start_date={string}&end_date={string}`
 
+Description: Return a list of orders with related user and products.
+
 Parameters:
 - page (integer): Starting index for the result set (default 1)
 - per_page (integer): Number of users to return (default 10)
@@ -136,6 +144,8 @@ Response:
 ```
 
 `GET /orders/:id`
+
+Description: Return a single order by their old system id.
 
 Parameters:
 - id (integer): Field with external order id (e.g. 123)
