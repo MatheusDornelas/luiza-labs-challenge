@@ -15,6 +15,8 @@
 * Ruby version 3.3.1
 * Ruby on Rails 8.0.0
 * Postgres 15.3
+* Sidekiq
+* Redis
 
 ## Project setup:
 
@@ -41,6 +43,8 @@ To run test suite:
 
 `POST /import-file`
 
+Description: Receive a file with .txt format and asynchronously process and add data in database.
+
 Body:
  - file: path to file that should be uploaded
 
@@ -49,10 +53,12 @@ Response:
 
 `GET /users?per_page={integer}&page={integer}&order_id={string}`
 
+Description: Return a list of users with their orders and related products.
+
 Parameters:
 - page (integer): Starting index for the result set (default 1)
 - per_page (integer): Number of users to return (default 10)
-- order_id (integer): Field with external order id (e.g. 123)
+- order_id (integer): Field with old system order id (e.g. 123)
 
 Response:
 200
@@ -77,8 +83,10 @@ Response:
 
 `GET /users/:id`
 
+Description: Return a single user by their old system id.
+
 Parameters:
-- id (integer): Field with external order id (e.g. 123)
+- id (integer): Field with old order id (e.g. 123)
 
 Response:
 200
