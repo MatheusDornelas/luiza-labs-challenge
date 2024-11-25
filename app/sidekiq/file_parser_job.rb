@@ -5,7 +5,7 @@ class FileParserJob
   sidekiq_options retry: false
 
   def perform(cache_id)
-    file = RedisClient.get(cache_id).split(/\n+/)
+    file = REDIS_CLIENT.get(cache_id).split(/\n+/)
 
     ActiveRecord::Base.transaction do
       file.each do |line|

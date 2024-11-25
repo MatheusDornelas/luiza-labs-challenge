@@ -7,7 +7,7 @@ RSpec.describe ImportController, type: :request do
     let(:file) { fixture_file_upload('spec/fixtures/file-to-be-imported.txt', 'text/txt') }
     let(:params) { { file: file } }
     let(:cache_id) { SecureRandom.uuid }
-    let(:redis) { RedisClient }
+    let(:redis) { REDIS_CLIENT }
     let(:worker) { FileParserJob }
 
     context 'must import file' do
